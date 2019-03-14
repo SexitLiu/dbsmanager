@@ -1,1 +1,34 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: resourcemanager
+  profiles:
+    active: mybatis
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.16.11.102:3306/resource_sw?useSSL=false&serverTimezone=Hongkong&characterEncoding=utf-8&autoReconnect=true
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+  thymeleaf:
+    prefix: classpath:/templates
+  mvc:
+    static-path-pattern: /**
 
+logging:
+  config: classpath:log4j2.yml
