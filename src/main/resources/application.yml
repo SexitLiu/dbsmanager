@@ -1,5 +1,6 @@
 server:
-  port: 8091
+  port: 8080
+
 spring:
   application:
     name: resourcemanager
@@ -29,6 +30,26 @@ spring:
     prefix: classpath:/templates
   mvc:
     static-path-pattern: /**
+  data:
+    mongodb:
+      host: 172.16.11.109
+      port: 27017
+      database: mydb
+  redis:
+    host: 172.16.11.109
+    port: 6379
+    password: 123456
 
 logging:
   config: classpath:log4j2.yml
+
+mybatis:
+  type-aliases-package: com.sexit.dbs.model
+  mapper-locations: classpath:mapper/*.xml
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
